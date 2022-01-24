@@ -1,5 +1,4 @@
 import MeetingLijst from "../components/meetings/MeetingLijst";
-import classes from './AlleMeetings.module.css'
 const DUMMY_DATA = [
   {
     id: "m1",

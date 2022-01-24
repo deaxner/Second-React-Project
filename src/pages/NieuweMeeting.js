@@ -1,7 +1,28 @@
-import NewMeetupForm from '../components/meetings/NewMeetupForm';
+import { useNavigate } from "react-router-dom";
+
+import NewMeetupForm from "../components/meetings/NewMeetupForm";
 function NieuweMeetingPage() {
-    return <div><h1>Nieuwe Meetings - Pagina</h1>
-    <NewMeetupForm /></div>;
+    const navigate = useNavigate
+  function addMeetupHandler(meetupData) {
+    fetch(
+      "..",
+      {
+        method: "POST",
+        body: JSON.stringify(meetupData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then(() => {
+      navigate.replace("/");
+    });
   }
-  export default NieuweMeetingPage;
-  
+
+  return (
+    <section>
+      <h1>Nieuwe Meetings - Pagina</h1>
+      <NewMeetupForm onAddMeetup={addMeetupHandler} />
+    </section>
+  );
+}
+export default NieuweMeetingPage;
